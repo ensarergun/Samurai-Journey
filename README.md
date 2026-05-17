@@ -52,6 +52,3 @@ Saldırı (⚔): Yakın dövüş hasarı verir.
 Shuriken Fırlatma (★): Menzilli saldırı yapar (Sınırlı mühimmat).
 
 Geliştirici: Ensar Ergun
-1. Bu depoyu klonlayın:
-   ```bash
-   git clone [https://github.com/ensarergun/Samurai-Journey.git](https://github.com/ensarergun/Samurai-Journey.git)
