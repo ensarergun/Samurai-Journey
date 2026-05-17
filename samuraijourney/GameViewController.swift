@@ -1,45 +1,33 @@
-//
-//  GameViewController.swift
-//  samuraijourney
-//
-//  Created by Ensar Ergün on 25.06.2025.
-//
-
 import UIKit
 import SpriteKit
-import GameplayKit
 
-class GameViewController: UIViewController {
+final class GameViewController: UIViewController {
+    private var hasPresented = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let skView = view as? SKView {
+            skView.isMultipleTouchEnabled = true
+            skView.ignoresSiblingOrder = true
+            #if DEBUG
+            skView.showsFPS = true
+            skView.showsNodeCount = true
+            #endif
+        }
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        guard !hasPresented, let skView = view as? SKView else { return }
         
-        if let view = self.view as! SKView? {
-            // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "GameScene") {
-                // Set the scale mode to scale to fit the window
-                scene.scaleMode = .aspectFill
-                
-                // Present the scene
-                view.presentScene(scene)
-            }
-            
-            view.ignoresSiblingOrder = true
-            
-            view.showsFPS = true
-            view.showsNodeCount = true
-        }
+        let scene = MenuScene(size: skView.bounds.size)
+        scene.scaleMode = .resizeFill
+        
+        skView.presentScene(scene)
+        hasPresented = true
     }
 
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            return .allButUpsideDown
-        } else {
-            return .all
-        }
-    }
-
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
+    override var prefersStatusBarHidden: Bool { true }
+    override var shouldAutorotate: Bool { true }
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask { .landscape }
 }
