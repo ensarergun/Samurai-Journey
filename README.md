@@ -51,4 +51,4 @@ Saldırı (⚔): Yakın dövüş hasarı verir.
 
 Shuriken Fırlatma (★): Menzilli saldırı yapar (Sınırlı mühimmat).
 
-Geliştirici: Ensar Ergun
+Geliştirici: Ensar Ergün
